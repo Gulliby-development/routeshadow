@@ -24,7 +24,7 @@ cargo install --path .
 
 This installs from the checkout; it does not depend on or claim a published crate. Cargo places the installed executable in its bin directory: `%USERPROFILE%\.cargo\bin\routeshadow.exe` on Windows and `~/.cargo/bin/routeshadow` on macOS and Linux.
 
-To build a release binary without installing it, run `cargo build --release`. The executable is `target\release\routeshadow.exe` on Windows and `target/release/routeshadow` on macOS and Linux.
+To build a release binary without installing it, run `cargo build --release`. The executable is `target\release\routeshadow.exe` on Windows and `target/release/routeshadow` on macOS and Linux. The release profile in `Cargo.toml` turns on `overflow-checks`, link-time optimization (`lto`), one code generation unit, stripped symbols and `panic = "abort"`: the binary is smaller and faster, and an arithmetic overflow stops the program instead of wrapping silently. Debug builds and `cargo test` are not affected.
 
 ## Usage
 
