@@ -12,7 +12,7 @@ fn documents_required_headings() {
 #[test]
 fn documents_exact_help_usage_lines() {
     assert!(README.contains(
-        "usage: routeshadow check FILE\n       routeshadow list FILE [--by-name]\n       routeshadow match FILE METHOD PATH [--all]\n       routeshadow shadow FILE\n       routeshadow overlap FILE\n       routeshadow url FILE ROUTE [KEY=VALUE...]\n       routeshadow regex FILE [--named]\n       routeshadow tree FILE"
+        "usage: routeshadow check FILE\n       routeshadow list FILE [--by-name] [--names]\n       routeshadow match FILE METHOD PATH [--all]\n       routeshadow shadow FILE\n       routeshadow overlap FILE\n       routeshadow url FILE ROUTE [KEY=VALUE...]\n       routeshadow regex FILE [--named]\n       routeshadow tree FILE"
     ));
 }
 
