@@ -1,6 +1,6 @@
 use crate::{error::RsError, io::Io, text};
 
-pub const USAGE: &str = "usage: routeshadow check FILE\n       routeshadow list FILE [--by-name]\n       routeshadow match FILE METHOD PATH [--all]\n       routeshadow shadow FILE\n       routeshadow overlap FILE\n       routeshadow url FILE ROUTE [KEY=VALUE...]\n       routeshadow regex FILE [--named]\n       routeshadow tree FILE\n";
+pub const USAGE: &str = "usage: routeshadow check FILE\n       routeshadow list FILE [--by-name] [--names]\n       routeshadow match FILE METHOD PATH [--all]\n       routeshadow shadow FILE\n       routeshadow overlap FILE\n       routeshadow url FILE ROUTE [KEY=VALUE...]\n       routeshadow regex FILE [--named]\n       routeshadow tree FILE\n";
 
 pub fn run(argv: &[String], io: &dyn Io) -> i32 {
     let Some(command) = argv.first() else {

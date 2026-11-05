@@ -1,9 +1,9 @@
 use crate::{error::RsError, io::Io, loader, options, text};
 
-pub const USAGE: &str = "routeshadow list FILE [--by-name]";
+pub const USAGE: &str = "routeshadow list FILE [--by-name] [--names]";
 
 pub fn run(args: &[String], io: &dyn Io) -> Result<i32, RsError> {
-    let parsed = options::parse(args, &["--by-name"])?;
+    let parsed = options::parse(args, &["--by-name", "--names"])?;
     let Some(file) = parsed.args.first() else {
         return Err(RsError(String::from("missing FILE")));
     };
@@ -15,6 +15,16 @@ pub fn run(args: &[String], io: &dyn Io) -> Result<i32, RsError> {
     let mut ordered_routes: Vec<_> = routes.iter().collect();
     if parsed.flags.contains("--by-name") {
         ordered_routes.sort_by(|left, right| left.name.as_bytes().cmp(right.name.as_bytes()));
+    }
+
+    if parsed.flags.contains("--names") {
+        let mut output = String::new();
+        for route in &ordered_routes {
+            output.push_str(&route.name);
+            output.push('\n');
+        }
+        io.out(&output);
+        return Ok(0);
     }
 
     let rows = ordered_routes

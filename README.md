@@ -32,7 +32,7 @@ Run `routeshadow --help` to print the command list:
 
 ```text
 usage: routeshadow check FILE
-       routeshadow list FILE [--by-name]
+       routeshadow list FILE [--by-name] [--names]
        routeshadow match FILE METHOD PATH [--all]
        routeshadow shadow FILE
        routeshadow overlap FILE
@@ -139,7 +139,7 @@ deepest     2
 ## Commands
 
 - `routeshadow check FILE` parses the file and reports route counts and summary statistics. A parser finding is printed as a finding; file and other command errors are errors.
-- `routeshadow list FILE [--by-name]` prints the route table in file order, or sorts names bytewise with `--by-name`.
+- `routeshadow list FILE [--by-name] [--names]` prints the route table in file order, or sorts names bytewise with `--by-name`. With `--names` it prints only the route names, one per line, without the header.
 - `routeshadow match FILE METHOD PATH [--all]` reports the first route that accepts the method and path, with parameter values in pattern order. `--all` adds the later matches. A request with no matching route is a silent negative result.
 - `routeshadow shadow FILE` reports routes wholly covered by an earlier individual route, naming the earliest route that contains each one. It does not report coverage formed only by a union of routes.
 - `routeshadow overlap FILE` reports crossing route pairs: routes with a shared method and path that neither route contains. A more specific route before a general route is not a crossing.
@@ -147,7 +147,7 @@ deepest     2
 - `routeshadow regex FILE [--named]` prints an anchored regular expression for each route. Literals are preserved with dots escaped, and `--named` gives parameter captures their route parameter names.
 - `routeshadow tree FILE` prints a deterministic tree, merging parameter nodes by type rather than parameter name. Literal children are bytewise ordered, followed by `:int`, `:slug`, `:any`, and rest nodes.
 
-Every command accepts a file path or `-` as its `FILE` argument. Options are `--by-name`, `--all`, and `--named` only on the commands shown above. The first route that matches wins, as in most routers.
+Every command accepts a file path or `-` as its `FILE` argument. Options are `--by-name`, `--names`, `--all`, and `--named` only on the commands shown above. The first route that matches wins, as in most routers.
 
 ## Exit codes
 

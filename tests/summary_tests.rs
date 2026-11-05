@@ -130,7 +130,10 @@ fn stats_counts_all_methods_rest_routes_and_maximum_depth() {
 #[test]
 fn option_and_arity_errors_precede_reads_and_writes() {
     assert_eq!(cmd_check::USAGE, "routeshadow check FILE");
-    assert_eq!(cmd_list::USAGE, "routeshadow list FILE [--by-name]");
+    assert_eq!(
+        cmd_list::USAGE,
+        "routeshadow list FILE [--by-name] [--names]"
+    );
 
     let io = fake_io(None, b"");
     assert_eq!(

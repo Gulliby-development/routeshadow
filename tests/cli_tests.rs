@@ -111,7 +111,7 @@ fn sole_help_prints_the_exact_usage_once_without_reading() {
     assert_eq!(*io.stdout.borrow(), vec![String::from(USAGE)]);
     assert_eq!(
         USAGE,
-        "usage: routeshadow check FILE\n       routeshadow list FILE [--by-name]\n       routeshadow match FILE METHOD PATH [--all]\n       routeshadow shadow FILE\n       routeshadow overlap FILE\n       routeshadow url FILE ROUTE [KEY=VALUE...]\n       routeshadow regex FILE [--named]\n       routeshadow tree FILE\n"
+        "usage: routeshadow check FILE\n       routeshadow list FILE [--by-name] [--names]\n       routeshadow match FILE METHOD PATH [--all]\n       routeshadow shadow FILE\n       routeshadow overlap FILE\n       routeshadow url FILE ROUTE [KEY=VALUE...]\n       routeshadow regex FILE [--named]\n       routeshadow tree FILE\n"
     );
     assert!(io.stderr.borrow().is_empty());
     assert_eq!(io.stdin_reads.get(), 0);
